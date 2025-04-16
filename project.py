@@ -105,7 +105,32 @@ class MusicApp:
         button.place(x=x, y=y, width=160, height=40)
         return button
 
+    def setup_users_tab(self):
+        tab = self.tabs["Users"]
+        self.user_id = self.labeled_entry(tab, "User ID", 50, 50)
+        self.user_name = self.labeled_entry(tab, "Username", 50, 90)
+        self.user_fname = self.labeled_entry(tab, "First Name", 50, 130)
+        self.user_lname = self.labeled_entry(tab, "Last Name", 50, 170)
+        self.user_email = self.labeled_entry(tab, "Email", 50, 210)
+        self.colored_button(tab, "Add User", self.add_user, 600, 130)
+        self.colored_button(tab, "View Users", self.view_users, 600, 180)
+        self.user_output = tk.Text(tab, height=15, width=100)
+        self.user_output.place(x=50, y=300)
 
+    def setup_songs_tab(self):
+        tab = self.tabs["Songs"]
+        self.song_id = self.labeled_entry(tab, "Song ID", 50, 50)
+        self.song_title = self.labeled_entry(tab, "Title", 50, 90)
+        self.song_album_id = self.labeled_entry(tab, "Album ID", 50, 130)
+        self.song_artist_id = self.labeled_entry(tab, "Artist ID", 50, 170)
+        self.song_genre_id = self.labeled_entry(tab, "Genre ID", 50, 210)
+        self.song_sales = self.labeled_entry(tab, "Sales", 50, 250)
+        self.colored_button(tab, "Add Song", self.add_song, 600, 150)
+        self.colored_button(tab, "View Songs", self.view_songs, 600, 200)
+        self.song_output = tk.Text(tab, height=15, width=100)
+        self.song_output.place(x=50, y=320)
+
+    
 if __name__ == '__main__':
     root = tk.Tk()
     app = MusicApp(root)
