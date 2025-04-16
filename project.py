@@ -179,6 +179,43 @@ class MusicApp:
         self.query_output = tk.Text(tab, height=30, width=130)
         self.query_output.place(x=50, y=100)
 
+    def add_user(self):
+        try:
+            self.cursor.execute("INSERT INTO users VALUES (?, ?, ?, ?, ?)",
+                                (self.user_id.get(), self.user_name.get(), self.user_fname.get(),
+                                 self.user_lname.get(), self.user_email.get()))
+            self.conn.commit()
+            self.clear_entries([self.user_id, self.user_name, self.user_fname, self.user_lname, self.user_email])
+            messagebox.showinfo("Success", "User added successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    def view_users(self):
+        self.cursor.execute("SELECT * FROM users")
+        rows = self.cursor.fetchall()
+        self.user_output.delete("1.0", tk.END)
+        for row in rows:
+            self.user_output.insert(tk.END, f"{row}\n")
+
+    def add_song(self):
+        try:
+            self.cursor.execute("INSERT INTO songs VALUES (?, ?, ?, ?, ?, ?)",
+                                (self.song_id.get(), self.song_title.get(), self.song_album_id.get(),
+                                 self.song_artist_id.get(), self.song_genre_id.get(), self.song_sales.get()))
+            self.conn.commit()
+            self.clear_entries([self.song_id, self.song_title, self.song_album_id,
+                                self.song_artist_id, self.song_genre_id, self.song_sales])
+            messagebox.showinfo("Success", "Song added successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    def view_songs(self):
+        self.cursor.execute("SELECT * FROM songs")
+        rows = self.cursor.fetchall()
+        self.song_output.delete("1.0", tk.END)
+        for row in rows:
+            self.song_output.insert(tk.END, f"{row}\n")
+
 
 if __name__ == '__main__':
     root = tk.Tk()
