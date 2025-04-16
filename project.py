@@ -63,6 +63,28 @@ class MusicApp:
         except Exception as e:
             messagebox.showerror("Database Error", str(e))
 
+    def setup_tabs(self):
+        self.tab_control = ttk.Notebook(self.root)
+        self.tabs = {}
+        tab_names = ["Users", "Songs", "Artists", "Genres", "Albums", "Favorites", "Queries"]
+
+        for i, name in enumerate(tab_names):
+            frame = tk.Frame(self.tab_control)
+            self.tabs[name] = frame
+            self.tab_control.add(frame, text=name)
+            self.set_background_image(frame, f"{i+1}.jpg")
+
+        self.tab_control.pack(expand=1, fill="both")
+
+        self.setup_users_tab()
+        self.setup_songs_tab()
+        self.setup_artists_tab()
+        self.setup_genres_tab()
+        self.setup_albums_tab()
+        self.setup_favorites_tab()
+        self.setup_queries_tab()
+
+
 if __name__ == '__main__':
     root = tk.Tk()
     app = MusicApp(root)
