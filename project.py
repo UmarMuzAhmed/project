@@ -235,7 +235,92 @@ class MusicApp:
         for row in rows:
             self.artist_output.insert(tk.END, f"{row}\n")
 
-    
+    def add_genre(self):
+        try:
+            self.cursor.execute("INSERT INTO genres VALUES (?, ?)",
+                                (self.genre_id.get(), self.genre_name.get()))
+            self.conn.commit()
+            self.clear_entries([self.genre_id, self.genre_name])
+            messagebox.showinfo("Success", "Genre added successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    def view_genres(self):
+        self.cursor.execute("SELECT * FROM genres")
+        rows = self.cursor.fetchall()
+        self.genre_output.delete("1.0", tk.END)
+        for row in rows:
+            self.genre_output.insert(tk.END, f"{row}\n")
+
+    def add_album(self):
+        try:
+            self.cursor.execute("INSERT INTO albums VALUES (?, ?, ?)",
+                                (self.album_id.get(), self.album_name.get(), self.album_year.get()))
+            self.conn.commit()
+            self.clear_entries([self.album_id, self.album_name, self.album_year])
+            messagebox.showinfo("Success", "Album added successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    def view_albums(self):
+        self.cursor.execute("SELECT * FROM albums")
+        rows = self.cursor.fetchall()
+        self.album_output.delete("1.0", tk.END)
+        for row in rows:
+            self.album_output.insert(tk.END, f"{row}\n")
+
+    def add_favorite(self):
+        try:
+            self.cursor.execute("INSERT INTO favorites VALUES (?, ?, ?)",
+                                (self.favorite_id.get(), self.fav_user_id.get(), self.fav_song_id.get()))
+            self.conn.commit()
+            self.clear_entries([self.favorite_id, self.fav_user_id, self.fav_song_id])
+            messagebox.showinfo("Success", "Favorite added successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    def view_favorites(self):
+        self.cursor.execute("SELECT * FROM favorites")
+        rows = self.cursor.fetchall()
+        self.favorite_output.delete("1.0", tk.END)
+        for row in rows:
+            self.favorite_output.insert(tk.END, f"{row}\n")
+
+    def query_users_favorites(self):
+        try:
+            self.cursor.execute('''SELECT u.username, s.title FROM users u
+                                   JOIN favorites f ON u.user_id = f.user_id
+                                   JOIN songs s ON f.song_id = s.song_id''')
+            rows = self.cursor.fetchall()
+            self.query_output.delete("1.0", tk.END)
+            for row in rows:
+                self.query_output.insert(tk.END, f"User: {row[0]} | Song: {row[1]}\n")
+        except Exception as e:
+            messagebox.showerror("Query Error", str(e))
+
+    def query_artists_songs(self):
+        try:
+            self.cursor.execute('''SELECT a.artist_name, s.title FROM artists a
+                                   JOIN songs s ON a.artist_id = s.artist_id''')
+            rows = self.cursor.fetchall()
+            self.query_output.delete("1.0", tk.END)
+            for row in rows:
+                self.query_output.insert(tk.END, f"Artist: {row[0]} | Song: {row[1]}\n")
+        except Exception as e:
+            messagebox.showerror("Query Error", str(e))
+
+    def query_song_details(self):
+        try:
+            self.cursor.execute('''SELECT s.title, g.genre_name, a.artist_name FROM songs s
+                                   JOIN genres g ON s.genre_id = g.genre_id
+                                   JOIN artists a ON s.artist_id = a.artist_id''')
+            rows = self.cursor.fetchall()
+            self.query_output.delete("1.0", tk.END)
+            for row in rows:
+                self.query_output.insert(tk.END, f"Song: {row[0]} | Genre: {row[1]} | Artist: {row[2]}\n")
+        except Exception as e:
+            messagebox.showerror("Query Error", str(e))
+
 if __name__ == '__main__':
     root = tk.Tk()
     app = MusicApp(root)
