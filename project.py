@@ -130,6 +130,37 @@ class MusicApp:
         self.song_output = tk.Text(tab, height=15, width=100)
         self.song_output.place(x=50, y=320)
 
+    def setup_artists_tab(self):
+        tab = self.tabs["Artists"]
+        self.artist_id = self.labeled_entry(tab, "Artist ID", 50, 50)
+        self.artist_name = self.labeled_entry(tab, "Name", 50, 90)
+        self.artist_country = self.labeled_entry(tab, "Country", 50, 130)
+        self.artist_grammys = self.labeled_entry(tab, "Grammys Won", 50, 170)
+        self.artist_social = self.labeled_entry(tab, "Social Media", 50, 210)
+        self.colored_button(tab, "Add Artist", self.add_artist, 600, 150)
+        self.colored_button(tab, "View Artists", self.view_artists, 600, 200)
+        self.artist_output = tk.Text(tab, height=15, width=100)
+        self.artist_output.place(x=50, y=300)
+
+    def setup_genres_tab(self):
+        tab = self.tabs["Genres"]
+        self.genre_id = self.labeled_entry(tab, "Genre ID", 50, 50)
+        self.genre_name = self.labeled_entry(tab, "Genre Name", 50, 90)
+        self.colored_button(tab, "Add Genre", self.add_genre, 600, 60)
+        self.colored_button(tab, "View Genres", self.view_genres, 600, 110)
+        self.genre_output = tk.Text(tab, height=15, width=100)
+        self.genre_output.place(x=50, y=160)
+
+    def setup_albums_tab(self):
+        tab = self.tabs["Albums"]
+        self.album_id = self.labeled_entry(tab, "Album ID", 50, 50)
+        self.album_name = self.labeled_entry(tab, "Album Name", 50, 90)
+        self.album_year = self.labeled_entry(tab, "Release Year", 50, 130)
+        self.colored_button(tab, "Add Album", self.add_album, 600, 70)
+        self.colored_button(tab, "View Albums", self.view_albums, 600, 120)
+        self.album_output = tk.Text(tab, height=15, width=100)
+        self.album_output.place(x=50, y=200)
+
     
 if __name__ == '__main__':
     root = tk.Tk()
