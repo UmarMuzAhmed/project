@@ -321,6 +321,10 @@ class MusicApp:
         except Exception as e:
             messagebox.showerror("Query Error", str(e))
 
+    def clear_entries(self, entry_list):
+        for entry in entry_list:
+            entry.delete(0, tk.END)
+
 if __name__ == '__main__':
     root = tk.Tk()
     app = MusicApp(root)
