@@ -161,7 +161,25 @@ class MusicApp:
         self.album_output = tk.Text(tab, height=15, width=100)
         self.album_output.place(x=50, y=200)
 
-    
+    def setup_favorites_tab(self):
+        tab = self.tabs["Favorites"]
+        self.favorite_id = self.labeled_entry(tab, "Favorite ID", 50, 50)
+        self.fav_user_id = self.labeled_entry(tab, "User ID", 50, 90)
+        self.fav_song_id = self.labeled_entry(tab, "Song ID", 50, 130)
+        self.colored_button(tab, "Add Favorite", self.add_favorite, 600, 80)
+        self.colored_button(tab, "View Favorites", self.view_favorites, 600, 130)
+        self.favorite_output = tk.Text(tab, height=15, width=100)
+        self.favorite_output.place(x=50, y=200)
+
+    def setup_queries_tab(self):
+        tab = self.tabs["Queries"]
+        self.colored_button(tab, "Users and Favorites", self.query_users_favorites, 50, 50)
+        self.colored_button(tab, "Artists and Songs", self.query_artists_songs, 250, 50)
+        self.colored_button(tab, "Songs with Details", self.query_song_details, 450, 50)
+        self.query_output = tk.Text(tab, height=30, width=130)
+        self.query_output.place(x=50, y=100)
+
+
 if __name__ == '__main__':
     root = tk.Tk()
     app = MusicApp(root)
