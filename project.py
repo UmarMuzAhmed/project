@@ -216,7 +216,26 @@ class MusicApp:
         for row in rows:
             self.song_output.insert(tk.END, f"{row}\n")
 
+    def add_artist(self):
+        try:
+            self.cursor.execute("INSERT INTO artists VALUES (?, ?, ?, ?, ?)",
+                                (self.artist_id.get(), self.artist_name.get(), self.artist_country.get(),
+                                 self.artist_grammys.get(), self.artist_social.get()))
+            self.conn.commit()
+            self.clear_entries([self.artist_id, self.artist_name, self.artist_country,
+                                self.artist_grammys, self.artist_social])
+            messagebox.showinfo("Success", "Artist added successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
 
+    def view_artists(self):
+        self.cursor.execute("SELECT * FROM artists")
+        rows = self.cursor.fetchall()
+        self.artist_output.delete("1.0", tk.END)
+        for row in rows:
+            self.artist_output.insert(tk.END, f"{row}\n")
+
+    
 if __name__ == '__main__':
     root = tk.Tk()
     app = MusicApp(root)
