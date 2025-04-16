@@ -84,6 +84,27 @@ class MusicApp:
         self.setup_favorites_tab()
         self.setup_queries_tab()
 
+    def set_background_image(self, frame, image_path):
+        image = Image.open(image_path).resize((1200, 850))
+        bg_photo = ImageTk.PhotoImage(image)
+        bg_label = tk.Label(frame, image=bg_photo)
+        bg_label.image = bg_photo
+        bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+    def labeled_entry(self, parent, label_text, x, y, width=30):
+        label = tk.Label(parent, text=label_text, font=("Arial", 12), bg="#dff0f7")
+        label.place(x=x, y=y)
+        entry = tk.Entry(parent, width=width, font=("Arial", 12))
+        entry.place(x=x+180, y=y)
+        return entry
+
+    def colored_button(self, parent, text, command, x, y):
+        button = tk.Button(parent, text=text, command=command, font=("Helvetica", 11, "bold"),
+                           bg="#004080", fg="white", activebackground="#0059b3",
+                           bd=0, relief="raised", padx=10, pady=5)
+        button.place(x=x, y=y, width=160, height=40)
+        return button
+
 
 if __name__ == '__main__':
     root = tk.Tk()
