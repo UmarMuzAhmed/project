@@ -1,5 +1,9 @@
 # Music Library Database Management System
 
+The Music Library Database is designed for music platforms, record labels, and digital archives to efficiently manage music data. Built using SQLite, a lightweight and serverless RDBMS, it ensures fast and structured storage with support for SQL joins, foreign key constraints, and relational consistency. Users can search songs by artist, view album details, track sales, and categorize by genre, all within a portable, Python-integrated system.
+
+---
+
 ## Project Description
 This project implements a **Music Library Database** designed to manage and retrieve structured music data. The application supports CRUD operations on a relational database with tables like `User`, `Song`, `Album`, `Artist`, `Genre`, and `Favorite`.
 
@@ -24,14 +28,13 @@ The database was built using **SQLite**, a lightweight and serverless relational
 
 ---
 
-## Demo Walkthrough
-The video includes:
-1. An overview of the database schema and relationships
-2. A demonstration of the GUI application performing CRUD operations:
-   - Adding, deleting, and updating songs, artists, users, etc.
-   - Viewing all albums by an artist using join queries
-3. Display of results from SQL queries with joins and subqueries
-4. Predefined search buttons to retrieve:
-   - Songs by artist
-   - Albums by genre
-   - Most sold songs
+> Note: No sensitive data is included in the repository. All credentials and hardcoded paths are kept secure or excluded from the codebase.
+
+---
+
+## 👤 Created by:
+**Umar Muzaffar Ahmed**  
+**R937H484**
+Dr. Huabo Lu 
+Introduction to Database Systems CS-655
+
