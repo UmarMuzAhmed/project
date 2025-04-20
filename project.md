@@ -35,6 +35,6 @@ The database was built using **SQLite**, a lightweight and serverless relational
 ## 👤 Created by:
 **Umar Muzaffar Ahmed**  
 **R937H484**
-Dr. Huabo Lu 
-Introduction to Database Systems CS-655
+-Dr. Huabo Lu 
+-Introduction to Database Systems CS-655
 
