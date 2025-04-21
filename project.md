@@ -24,7 +24,7 @@ The database was built using **SQLite**, a lightweight and serverless relational
 ## 🔗 Links
 
 - ** GitHub Repository:** [Your GitHub Link Here](https://github.com/UmarMuzAhmed/project/tree/main)
-- ** Demo Video (YouTube):** [Watch on YouTube]((https://youtu.be/_W2Y8xW7lEw))
+- ** Demo Video (YouTube):** [Watch on YouTube](https://youtu.be/_W2Y8xW7lEw)
 
 ---
 
